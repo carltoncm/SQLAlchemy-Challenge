@@ -35,11 +35,11 @@ def home():
     return (
         f"Welcome to the Hawaii Weather API</br>"
         f"Available Routes:<br/>"
-        f"/api/v1.0/precipitation<br/>"
-        f"/api/v1.0/stations<br/>"
-        f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start><br/>"
-        f"/api/v1.0/<start>/<end>")
+        f"Precipitation over the last year: /api/v1.0/precipitation<br/>"
+        f"Stations: /api/v1.0/stations<br/>"
+        f"Temperatures from most active station: /api/v1.0/tobs<br/>"
+        f"Min/Max/Avg temps from start date: /api/v1.0/<start><br/>"
+        f"Min/Max/Avg temps from date range: /api/v1.0/<start>/<end>")
 
 
 @app.route("/api/v1.0/precipitation")
@@ -69,7 +69,7 @@ def stations():
 @app.route("/api/v1.0/tobs")
 def tobs():
     year_ago = dt.date(2017, 8, 23) - dt.timedelta(days=365)
-    active_station = session.query(Measurement.tobs).\
+    active_station = session.query(Measurement.date, Measurement.tobs).\
                     filter(Measurement.station == 'USC00519281').\
                     filter(Measurement.date >= year_ago).all()
     session.close()
@@ -83,3 +83,7 @@ def tobs():
 
 #@app.route("/api/v1.0/<start>/<end>")
 #def start_end():
+
+
+if __name__ == "__main__":
+    app.run()
