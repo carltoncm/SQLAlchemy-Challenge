@@ -3,7 +3,7 @@ This repository is for the Data Analytics Bootcamp Module 10 Challenge
 
 I began my analyis by connecting to the SQLite file and importing the information therein. This allowed me to analyze the data and be able to draw conclusions regarding the best time to travel to Hawaii. I was able to explore the relationship between date and percipiation: 
 
-![precp](C:/Users/carlt/Documents/DA Bootcamp/SQLAlchemy-Challenge/SurfsUp/Images/precipitation.png)
+![precp](Images/precipitation.png)
 
 
 Next, I explored the relationship between frequency and temperature in the dataset by analyzing the data provided by the most active station:
